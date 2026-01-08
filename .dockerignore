@@ -1,0 +1,7 @@
+.git
+.gitignore
+_build
+deps
+cover
+*.log
+.DS_Store
