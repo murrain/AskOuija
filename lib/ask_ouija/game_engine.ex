@@ -5,6 +5,22 @@ defmodule AskOuija.GameEngine do
 
   alias AskOuija.{Chat, Prompts, Scoring}
 
+  @type t :: %__MODULE__{
+          room_id: String.t(),
+          settings: map(),
+          phase: atom(),
+          current_prompt: Prompts.Prompt.t() | nil,
+          round_started_at: integer() | nil,
+          round_ends_at: integer() | nil,
+          rng: any(),
+          submissions: map(),
+          scores: map(),
+          players: map(),
+          round_players: list(),
+          chat: Chat.t(),
+          history: list()
+        }
+
   defstruct [
     :room_id,
     :settings,
