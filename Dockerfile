@@ -29,10 +29,10 @@ RUN apt-get update && \
 WORKDIR /app
 
 ENV MIX_ENV=prod \
-    PORT=4000
+    PORT=8080
 
 COPY --from=build /app/_build/prod/rel/ask_ouija ./
 
-EXPOSE 4000
+EXPOSE 8080
 
 CMD ["bin/ask_ouija", "start"]
