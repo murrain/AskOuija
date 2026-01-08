@@ -35,8 +35,8 @@ defmodule AskOuijaWeb.HomeLive do
     ~H"""
     <div class="stack">
       <div class="card">
-        <h1>AskOuija</h1>
-        <p class="muted">Real-time multiplayer Ouija guessing game.</p>
+        <h1>Speed Trivia</h1>
+        <p class="muted">Real-time multiplayer trivia in rapid-fire rounds.</p>
       </div>
 
       <div class="card stack">

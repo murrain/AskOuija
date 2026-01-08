@@ -123,15 +123,15 @@ defmodule AskOuijaWeb.RoomLive do
             </div>
           <% else %>
             <div class="card stack">
-              <h3>Prompt</h3>
+              <h3>Question</h3>
               <p><%= @engine.current_prompt && @engine.current_prompt.question_text %></p>
               <p class="muted">Ends at: <%= format_time(@engine.round_ends_at) %></p>
 
               <%= if @engine.phase == :answering do %>
                 <form phx-submit="submit_guess" id="guess-form">
                   <div class="row">
-                    <input type="text" name="guess" value={@guess} maxlength="80" placeholder="Your guess" autocomplete="off" />
-                    <button type="submit">Submit</button>
+                    <input type="text" name="guess" value={@guess} maxlength="80" placeholder="Your answer" autocomplete="off" />
+                    <button type="submit">Submit answer</button>
                   </div>
                 </form>
                 <p class="muted">Answered: <%= MapSet.size(@answered) %>/<%= length(@engine.round_players) %></p>
@@ -140,7 +140,7 @@ defmodule AskOuijaWeb.RoomLive do
               <%= if @engine.phase == :reveal do %>
                 <div class="answers">
                   <h4>Reveal</h4>
-                  <p>Canonical answer: <strong><%= @engine.current_prompt.canonical_answer %></strong></p>
+                  <p>Correct answer: <strong><%= @engine.current_prompt.canonical_answer %></strong></p>
                   <table>
                     <thead>
                       <tr>
