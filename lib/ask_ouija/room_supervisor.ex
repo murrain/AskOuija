@@ -1,5 +1,7 @@
 defmodule AskOuija.RoomSupervisor do
-  @moduledoc false
+  @moduledoc """
+  Supervises room processes and provides a lookup/start API.
+  """
   use DynamicSupervisor
 
   def start_link(_arg) do

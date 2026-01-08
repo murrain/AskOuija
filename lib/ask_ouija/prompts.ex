@@ -1,5 +1,7 @@
 defmodule AskOuija.Prompts do
-  @moduledoc false
+  @moduledoc """
+  Prompt selection entry point for the game engine and room server.
+  """
 
   alias AskOuija.Prompts.LocalProvider
 
