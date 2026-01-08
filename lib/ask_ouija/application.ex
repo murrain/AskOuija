@@ -5,13 +5,15 @@ defmodule AskOuija.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [
-      {Registry, keys: :unique, name: AskOuija.RoomRegistry},
-      {Phoenix.PubSub, name: AskOuija.PubSub},
-      AskOuijaWeb.Presence,
-      AskOuija.RoomSupervisor,
-      AskOuijaWeb.Endpoint
-    ]
+    children =
+      [
+        {Registry, keys: :unique, name: AskOuija.RoomRegistry},
+        {Phoenix.PubSub, name: AskOuija.PubSub},
+        AskOuijaWeb.Presence,
+        AskOuija.RoomSupervisor,
+        AskOuijaWeb.Endpoint
+      ]
+      |> maybe_add_scraper()
 
     opts = [strategy: :one_for_one, name: AskOuija.Supervisor]
     Supervisor.start_link(children, opts)
@@ -21,5 +23,13 @@ defmodule AskOuija.Application do
   def config_change(changed, _new, removed) do
     AskOuijaWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp maybe_add_scraper(children) do
+    if AskOuija.Scraper.Config.enabled?() do
+      children ++ [AskOuija.Scraper.Scheduler]
+    else
+      children
+    end
   end
 end
