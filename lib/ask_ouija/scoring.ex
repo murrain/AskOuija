@@ -1,6 +1,6 @@
 defmodule AskOuija.Scoring do
   @moduledoc """
-  Scoring helpers for AskOuija.
+  Scoring helpers for speed trivia rounds.
   """
 
   def normalize(answer) do
@@ -35,7 +35,7 @@ defmodule AskOuija.Scoring do
         score = trunc(base * time_factor)
         clamp(score, min_points, base)
 
-      settings.scoring_mode == :fuzzy_similarity ->
+      settings.scoring_mode == :fuzzy ->
         similarity_score = similarity(answer, prompt)
         trunc(base * similarity_score * time_factor)
 

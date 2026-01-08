@@ -28,7 +28,7 @@ defmodule AskOuija.GameEngine do
       intermission_seconds: 5,
       number_of_rounds: 5,
       endless: false,
-      scoring_mode: :strict_exact,
+      scoring_mode: :strict,
       base_correct_points: 100,
       min_correct_points: 10,
       first_correct_bonus: 20,

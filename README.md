@@ -1,9 +1,9 @@
-# AskOuija
+# Speed Trivia
 
-Multiplayer game where users guess what Reddit's answer will be in r/AskOuija.
+Real-time multiplayer trivia game with fast, timed rounds and hidden answers.
 
 ## Overview
-AskOuija is a Phoenix LiveView app that runs real-time multiplayer rounds. Players submit letters one at a time, watch the answer evolve live, and try to predict what the crowd will spell out based on AskOuija threads.
+Speed Trivia is a Phoenix LiveView app that runs real-time multiplayer rounds. Players submit a single answer per question, then see results and scores once the timer expires or everyone answers.
 
 ## Features
 - Live multiplayer rounds with real-time updates via Phoenix LiveView.
