@@ -6,7 +6,7 @@ defmodule AskOuija.Accounts do
   @adjectives ~w(Curious Spooky Silly Bright Clever Swift Ancient Lucky Mysterious)
   @nouns ~w(Oracle Spirit Whisper Echo Lantern Raven Wanderer Mirror)
 
-  def generate_guest(seed \ System.system_time(:millisecond)) do
+  def generate_guest(seed \\ System.system_time(:millisecond)) do
     {adj, noun} = name_from_seed(seed)
     %{id: "guest_#{seed}", name: "#{adj} #{noun}", avatar_seed: Integer.to_string(seed)}
   end

@@ -9,5 +9,8 @@ defmodule AskOuija.Prompts do
     :rand.seed_s(:exsplus, {seed, seed, seed})
   end
 
-  def provider, do: LocalProvider
+  def provider do
+    config = Application.get_env(:ask_ouija, __MODULE__, [])
+    Keyword.get(config, :provider, LocalProvider)
+  end
 end
