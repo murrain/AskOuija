@@ -13,7 +13,7 @@ defmodule AskOuijaWeb.HomeLive do
   @impl true
   def handle_event("create", _params, socket) do
     room_id = random_room_code()
-    {:noreply, push_navigate(socket, to: ~p"/rooms/#{room_id}")}
+    {:noreply, push_navigate(socket, to: Routes.live_path(socket, AskOuijaWeb.RoomLive, room_id))}
   end
 
   def handle_event("join", %{"room" => room}, socket) do
@@ -22,7 +22,7 @@ defmodule AskOuijaWeb.HomeLive do
     if room_id == "" do
       {:noreply, assign(socket, errors: ["Enter a room code to join."])}
     else
-      {:noreply, push_navigate(socket, to: ~p"/rooms/#{room_id}")}
+      {:noreply, push_navigate(socket, to: Routes.live_path(socket, AskOuijaWeb.RoomLive, room_id))}
     end
   end
 
