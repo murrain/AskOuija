@@ -138,7 +138,7 @@ defmodule AskOuija.GameEngine do
   def reveal(state) do
     round_duration_ms = state.settings.round_time_seconds * 1000
 
-    {scored, first_correct} =
+    {scored, _first_correct} =
       state.submissions
       |> Enum.map(fn {player_id, submission} ->
         score =

@@ -46,7 +46,7 @@ defmodule AskOuija.Scraper.Reddit do
     url =
       "#{@base_url}/r/#{config[:subreddit]}/new.json?limit=#{config[:limit]}"
 
-    headers = [{'User-Agent', to_charlist(config[:user_agent])}]
+    headers = [{~c"User-Agent", to_charlist(config[:user_agent])}]
 
     case :httpc.request(:get, {to_charlist(url), headers}, [], []) do
       {:ok, {{_, 200, _}, _headers, body}} ->
