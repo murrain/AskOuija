@@ -85,7 +85,8 @@ defmodule AskOuija.RoomServer do
   def handle_call({:leave, player_id}, _from, state) do
     player = state.engine.players[player_id]
     engine = GameEngine.leave_player(state.engine, player_id)
-    {chat, message} = Chat.system_message(engine.chat, "#{player&.name || "A player"} left the room", now_ms())
+    player_name = if player, do: player.name, else: "A player"
+    {chat, message} = Chat.system_message(engine.chat, "#{player_name} left the room", now_ms())
     engine = %{engine | chat: chat}
     broadcast(state.room_id, :player_left, %{player_id: player_id})
     broadcast(state.room_id, :chat_message_posted, message)
